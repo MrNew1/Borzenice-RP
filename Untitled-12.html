@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona</title>
+    <style>
+        body {
+            color: rgb(0, 195, 255);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .slideshow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .active {
+            opacity: 1;
+        }
+        
+        .tab-container {
+            width: 80%;
+            max-width: 600px;
+        }
+        .tab {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            margin: 5px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .tab:hover {
+            background: rgb(0, 247, 255);
+            color: black;
+            transform: scale(1.05);
+        }
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0 10px;
+            border-radius: 10px;
+            margin-top: 5px;
+            color: white;
+            font-size: 1rem;
+            transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+        }
+        .content.show {
+            max-height: 200px;
+            padding: 10px;
+        }
+         /* Social Media Icons */
+         .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="slide active" style="background-image: url('https://cdn.discordapp.com/attachments/1297135646028333136/1339946780602794047/Zrzut_ekranu_2025-02-13_204115.png?ex=67b0922f&is=67af40af&hm=70ccf3ca00f1035b5e5784fff17035d845019601293967b8104bc7da5ce2dc5a&');"></div>
+        <div class="slide" style="background-image: url('https://media.discordapp.net/attachments/1317194826898477096/1339669658009075804/image.png?ex=67b038d8&is=67aee758&hm=d695cbb09b2f0c6055e7be8b1b453d5a7bcd04a6f43c5543213ab2b734088c37&format=webp&quality=lossless&width=1440&height=435&');"></div>
+        <div class="slide" style="background-image: url('https://cdn.discordapp.com/attachments/1294295789153292401/1339678341241901226/image.png?ex=67af982e&is=67ae46ae&hm=5da3908f53bca21d7b3dc4d447065e0d36a3cbdadd2e3bb8a5f67291ca1fef5d&');"></div>
+    </div>
+
+    <h1>BORZECIN ROLEPLAY</h1>
+    <div class="tab-container">
+        <div class="tab" onclick="toggleTab(0)">Spis Administracji</div>
+        <div class="content"> <li>Właściciele: Klocuś2008, puzoniq </li> <li>Co Porject Leader: MrNew</li> <li> Admin: Smalsim, Nera</li></div>
+        <div class="tab" onclick="toggleTab(1)">Regulamin</div>
+        <div class="content"> <a href="https://mrnew1.github.io/Biel-biale-rp-/">Regulamin</a> </div>
+        <div class="tab" onclick="toggleTab(2)">Zakładka 3</div>
+        <div class="content">Treść zakładki 3</div>
+        <div class="tab" onclick="toggleTab(3)">Zakładka 4</div>
+        <div class="content">Treść zakładki 4</div>
+        <div class="tab" onclick="toggleTab(4)">Zakładka 5</div>
+        <div class="content">Treść zakładki 5</div>
+    </div>
+    
+    <script>
+        let openTab = null;
+        function toggleTab(index) {
+            const contents = document.querySelectorAll('.content');
+            if (openTab === index) {
+                contents[index].classList.remove('show');
+                openTab = null;
+            } else {
+                contents.forEach((content, i) => {
+                    content.classList.toggle('show', i === index);
+                });
+                openTab = index;
+            }
+        }
+        
+        let slideIndex = 0;
+        function showSlides() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === slideIndex);
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+            setTimeout(showSlides, 3000);
+        }
+        showSlides();
+    </script>
+
+       <!-- Social Media Icons -->
+       <div class="social-icons">
+        <a href="https://discord.gg/RVsk8sswZ6" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/en/9/98/Discord_logo.svg" alt="Discord">
+        </a>
+        <a href="https://www.youtube.com/@idawideqi3032" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
+        </a>
+        <a href="https://www.tiktok.com/@mr.new12" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok">
+        </a>
+        <a href="https://mrnew1.github.io/Sklep-Bielsko-Bia-e-RP/" target="_blank">
+            <img src="https://mrnew1.github.io/Sklep-Bielsko-Bia-e-RP/" alt="Sklep">
+        </a>
+    </div>
+
+</body>
+</html>
